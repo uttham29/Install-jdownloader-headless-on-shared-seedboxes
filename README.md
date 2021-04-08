@@ -40,7 +40,7 @@ Enter your jdownloader logins now.
 
 After few seconds click ctrl+c
 
-You need to run jdownloader in background, so you can "either" use screen or create a systemd file
+You need to run jdownloader in background, so you can use screen for that.
 
 ```
 screen -S jdownloader
@@ -49,36 +49,6 @@ java -jar JDownloader.jar -norestart
 ctrl a+d
 ```
 You need to do this everytime your shared server is restarted.
-
-or 
-
-Systemd files will start your jdownloader if there are any restarts in your shared seedbox server, so use systemd method if your provider allows them.
-
-```
-mkdir -p ~/.config/systemd/user
-nano ~/.config/systemd/user/jdownloader.service
-```
-
-paste this in nano editor
-
-```
-[Unit]
-Description=JDownloader Service
-After=network.target
-
-[Service]
-Environment=JD_HOME=%h/jd
-ExecStart=/usr/bin/java -Djava.awt.headless=true -jar %h/jd/JDownloader.jar
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```
-systemctl --user daemon-reload
-systemctl enable --now --user jdownloader
-systemctl status --user jdownloader
-```
 
 Go to https://my.jdownloader.org/ in your browser and login to your jd account
 
