@@ -46,11 +46,13 @@ You need to run jdownloader in background, so you can "either" use screen or cre
 screen -S jdownloader
 cd jd
 java -jar JDownloader.jar -norestart
+ctrl a+d
 ```
+You need to do this everytime your shared server is restarted.
 
 or 
 
-If you provider allows creation of systemd files
+Systemd files will start your jdownloader if there are any restarts in your shared seedbox server, so use systemd method if your provider allows them.
 
 ```
 mkdir -p ~/.config/systemd/user
